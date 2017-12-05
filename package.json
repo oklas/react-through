@@ -1,0 +1,28 @@
+{
+  "name": "react-through",
+  "version": "1.0.0",
+  "description": "Declarative data transfer through react tree",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oklas/react-through.git"
+  },
+  "keywords": [
+    "react",
+    "through",
+    "declarative",
+    "props",
+    "data",
+    "transfer",
+    "exchange"
+  ],
+  "author": "Serguei Okladnikov <oklaspec@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oklas/react-through/issues"
+  },
+  "homepage": "https://github.com/oklas/react-through"
+}
