@@ -1,0 +1,17 @@
+sudo: false
+language: node_js
+cache:
+  directories:
+    - node_modules
+node_js:
+  - "node"
+  - "6"
+  - "8"
+script:
+  - npm run test
+branches:
+  only:
+    - master
+    - travis
+after_success:
+  - codecov -e TRAVIS_NODE_VERSION
