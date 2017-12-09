@@ -1,9 +1,9 @@
 import React, { Children } from 'react'
 import PropTypes from 'prop-types'
 
-export throughAgent = (area) => (AgentComponent) {
+const throughAgent = (area) => (AgentComponent) => {
   class ThroughAgent extends React.Component {
-    static childContextTypes = {
+    static contextTypes = {
       through: PropTypes.object,
     }
 
@@ -28,7 +28,7 @@ export throughAgent = (area) => (AgentComponent) {
 
     items = (elem) => {
       const data = {}
-      React.Children.forEach(elem.props.children, function(elem){
+      React.Children.forEach(elem.props.children, function(elem) {
         if(!elem || !elem.props.to) { return }
         data[elem.props.to] = elem.props
       })
@@ -40,10 +40,10 @@ export throughAgent = (area) => (AgentComponent) {
         key => !data.hasOwnProperty(key)
       )
       remove.forEach(
-        key => this.props.through.deinstall(area, key)
+        key => this.context.through.remove(area, key)
       )
       Object.keys(data).forEach(
-        key => this.props.through.install(area, key, data[key], true)
+        key => this.context.through.install(area, key, data[key], true)
       )
       this.data = data
     }
@@ -51,8 +51,10 @@ export throughAgent = (area) => (AgentComponent) {
     render() {
       const {item, items} = this
       const through = Object.assign({item, items}, this.props.through)
-      return <AgentComponent {...this.props} through={through} />
+      return <AgentComponent {...this.props} {...{[area]:{item, items}}} />
     }
   }
   return ThroughAgent
 }
+
+export default throughAgent

@@ -3,8 +3,13 @@ import PropTypes from 'prop-types'
 
 
 export default class ThroughProvider extends React.Component {
+  static childContextTypes = {
+    through: PropTypes.object.isRequired,
+  }
+
   static propTypes = {
     shouldBreadcrumbsUpdate: PropTypes.func,
+    children: PropTypes.element,
   }
 
   constructor(props) {
@@ -12,11 +17,21 @@ export default class ThroughProvider extends React.Component {
     this.areas = {}
   }
 
+  getChildContext() {
+    return {
+      through: {
+        install: this.install,
+        remove: this.remove,
+        subscribe: this.subscribe,
+      }
+    }
+  }
+
   area = (area) => {
-    if( this.areas.hasOwnProperty(area) ) {
+    if( !this.areas.hasOwnProperty(area) ) {
       this.areas[area] = {
         name: area,
-        listners: [],
+        listeners: [],
         data: {},
       }
     }
@@ -35,6 +50,7 @@ export default class ThroughProvider extends React.Component {
     area = this.area(area)
 
     area.listeners.push(listener)
+    listener(area.data)
 
     return () => {
       area.listeners = area.listeners.filter(
@@ -56,7 +72,7 @@ export default class ThroughProvider extends React.Component {
     return [diff, comp]
   }
 
-  check_args(area, key, props) {
+  checkArgs(area, key, props) {
     if (process.env.NODE_ENV !== 'production') {
       if(
         !( typeof area === 'string' || area instanceof String ) ||
@@ -64,7 +80,7 @@ export default class ThroughProvider extends React.Component {
         !( props instanceof Object && !(props instanceof Array) )
       ) {
         throw new Error(
-          "type error: through.[de]install(area:string, key:string, props:Object)"
+          "type error: through.[install|remove](area:string, key:string, props:Object)"
         )
       }
     }
@@ -98,7 +114,7 @@ export default class ThroughProvider extends React.Component {
     this.notify(area.name, syncUpdate)
   }
 
-  deinstall = (area, key, syncUpdate = undefined) => {
+  remove = (area, key, syncUpdate = undefined) => {
     this.checkArgs(area, key, {})
     area = this.area(area)
 
@@ -109,21 +125,7 @@ export default class ThroughProvider extends React.Component {
       this.notify(area.name, true)
     }
   }
-
-  getChildContext() {
-    return {
-      through: {
-        install: this.install,
-        deinstall: this.deinstall,
-        subscribe: this.subscribe,
-      }
-    }
-  }
-
   render() {
-    return (
-      {this.props.children}
-    )
+    return React.Children.only(this.props.children)
   }
 }
-

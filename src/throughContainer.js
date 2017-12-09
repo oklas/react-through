@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 
 const MAX_DATA_NUM = 1000000
 
-export function throughContainer = (area) => (ThroughComponent) {
+const throughContainer = (area) => (ThroughComponent) => {
   class ThroughContainer extends React.Component {
-    static childContextTypes = {
+    static contextTypes = {
       through: PropTypes.object,
     }
 
@@ -14,14 +14,19 @@ export function throughContainer = (area) => (ThroughComponent) {
       this.state = {
         dataNum: MAX_DATA_NUM
       }
+      this.dataNum = MAX_DATA_NUM
       this.data = {}
       this.timer = undefined
       this.mounted = false
+      this.canSetState = false
    }
 
     componentDidMount() {
       this.unsubscribe = this.context.through.subscribe(area, this.doUpdate)
       this.canSetState = true
+      if(this.state.dataNum != this.dataNum) {
+         this.doUpdate(this.data, true)
+      }
     }
 
     componentWillUnmount() {
@@ -55,10 +60,12 @@ export function throughContainer = (area) => (ThroughComponent) {
 
     render() {
       return (
-        <ThroughComponent {...this.data} />
+        <ThroughComponent {...this.props} {...{[area]: this.data}} />
       )
     }
   }
 
   return ThroughContainer
 }
+
+export default throughContainer
