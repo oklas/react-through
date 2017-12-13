@@ -1,7 +1,25 @@
 import React, { Children } from 'react'
 import PropTypes from 'prop-types'
 
-const throughAgent = (area) => (AgentComponent) => {
+const throughAgent = (area, key) => (AgentComponent) => {
+  let getKey = null
+
+  if( !(typeof area === 'string' || area instanceof String ) ) {
+    throw new Error(
+      "type error: throughAgent(area:string, key:string|function)"
+    )
+  }
+
+  if( typeof key === 'string' || key instanceof String ) {
+    getKey = (props) => props[key]
+  } else if ( typeof key === 'function' ) {
+    getKey = key
+  } else {
+    throw new Error(
+      "type error: throughAgent(area:string, key:string|function)"
+    )
+  }
+
   class ThroughAgent extends React.Component {
     static contextTypes = {
       through: PropTypes.object,
@@ -21,16 +39,18 @@ const throughAgent = (area) => (AgentComponent) => {
     }
 
     item = (elem) => {
-      const data = (!elem || !elem.props.to) ?
-        {} : { [elem.props.to]: elem.props }
+      const key = elem && getKey(elem.props)
+      const data = (!elem || !key) ?
+        {} : { [key]: elem.props }
       this.update(data)
     }
 
     items = (elem) => {
       const data = {}
       React.Children.forEach(elem.props.children, function(elem) {
-        if(!elem || !elem.props.to) { return }
-        data[elem.props.to] = elem.props
+        const key = elem && getKey(elem.props)
+        if(!elem || !key) { return }
+        data[key] = elem.props
       })
       this.update(data)
     }
