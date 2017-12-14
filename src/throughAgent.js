@@ -11,9 +11,11 @@ const throughAgent = (area, key) => (AgentComponent) => {
   }
 
   if( typeof key === 'string' || key instanceof String ) {
-    getKey = (props) => props[key]
+    getKey = props => props[key]
   } else if ( typeof key === 'function' ) {
     getKey = key
+  } else if (key === undefined || key === null) {
+    getKey = props => 'default'
   } else {
     throw new Error(
       "type error: throughAgent(area:string, key:string|function)"

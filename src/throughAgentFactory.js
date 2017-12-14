@@ -33,9 +33,10 @@ const throughAgentFactory = (area, key) => {
       }
     }
 
-    configureItems = (props) => {
+    configureItem = (props) => {
+      const {[area]: notused, ...data} = props
       props[area].item(
-        <Item {...props} />
+        <Item {...data} />
       )
     }
 
