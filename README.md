@@ -131,14 +131,14 @@ class MyAdvancedAgent extends React.Component {
     }
 
     componentWillMount() {
-      this.configureItes(this.props)
+      this.configureItems(this.props)
     }
 
     componentWillReceiveProps(nextProps) {
       // check this.props and nextProps differences here
       // differences = ...
       if( differences ) {
-        this.configureItem(nextProps)
+        this.configureItems(nextProps)
       }
     }
 
@@ -167,7 +167,7 @@ class MyAdvancedAgent extends React.Component {
 export default throughAgent('areaAdvanced', 'bearingKey')(MyAdvancedAgent)
 // or
 export default throughAgent('areaAdvanced', props => props.bearingKey)(MyAdvancedAgent)
-
+```
 
 
 ## LICENSE
