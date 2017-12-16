@@ -169,6 +169,10 @@ export default throughAgent('areaAdvanced', 'bearingKey')(MyAdvancedAgent)
 export default throughAgent('areaAdvanced', props => props.bearingKey)(MyAdvancedAgent)
 ```
 
+# Known usage
+
+* [react-breadcrumbs-dynamic](https://github.com/oklas/react-breadcrumbs-dynamic)
+
 
 ## LICENSE
 
