@@ -1,6 +1,6 @@
 {
   "name": "react-through",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Declarative data transfer through react tree",
   "main": "dist/src/index.js",
   "repository": {
