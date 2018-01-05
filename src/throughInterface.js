@@ -11,11 +11,14 @@ const throughInterface = (area) => (AgentComponent) => {
       return (
         <AgentComponent {...this.props}
           { ...{[area]: {
-            install: (key, props, syncUpdate = undefined) => {
-              this.context.through.install(area, key, props, syncUpdate)
+            update: (key, props, syncUpdate = undefined) => {
+              this.context.through.update(area, key, props, syncUpdate)
             },
-            remove: (key, syncUpdate = undefined) => {
-              this.context.through.remove(area, key, syncUpdate)
+            add: (key) => {
+              this.context.through.add(area, key)
+            },
+            remove: (key) => {
+              this.context.through.remove(area, key)
             },
           } } }
        />
