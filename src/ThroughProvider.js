@@ -20,8 +20,7 @@ export default class ThroughProvider extends React.Component {
   getChildContext() {
     return {
       through: {
-        update: this.update,
-        add: this.add,
+        install: this.install,
         remove: this.remove,
         subscribe: this.subscribe,
       }
@@ -33,7 +32,6 @@ export default class ThroughProvider extends React.Component {
       this.areas[area] = {
         name: area,
         listeners: [],
-        counters: {},
         data: {},
       }
     }
@@ -82,22 +80,15 @@ export default class ThroughProvider extends React.Component {
         !( props instanceof Object && !(props instanceof Array) )
       ) {
         throw new Error(
-          "react-through: type error: " +
-          "through.[add|update|remove](area:string, key:string, props:Object)"
+          "type error: through.[install|remove](area:string, key:string, props:Object)"
         )
       }
     }
   }
 
-  update = (area, key, props, syncUpdate = undefined) => {
+  install = (area, key, props, syncUpdate = undefined) => {
     this.checkArgs(area, key, props)
     area = this.area(area)
-
-    if (process.env.NODE_ENV !== 'production') {
-      if( !area.counters[key] ) {
-        throw new Error("react-through: bearing key must be added before update")
-      }
-    }
 
     const prevProps = area.data[key] || {}
 
@@ -123,36 +114,17 @@ export default class ThroughProvider extends React.Component {
     this.notify(area.name, syncUpdate)
   }
 
-  add = (area, key) => {
+  remove = (area, key, syncUpdate = undefined) => {
     this.checkArgs(area, key, {})
     area = this.area(area)
-    area.counters[key] = area.counters[key] ? area.counters[key] + 1 : 1
 
-    if (process.env.NODE_ENV !== 'production') {
-      if( 2 < area.counters[key] ) {
-        throw new Error(
-          "react-through: bearing key adding must be not more 2, call remove()"
-        )
-      }
-    }
-  }
-
-  remove = (area, key) => {
-    this.checkArgs(area, key, {})
-    area = this.area(area)
-    let count = area.counters[key]
-    count = count ? count - 1 : 0
-    area.counters[key] = count
-
-    if( !count && area.data.hasOwnProperty(key) ) {
+    if( area.data.hasOwnProperty(key) ) {
       const data = Object.assign({}, area.data)
-      delete area.counters[key]
       delete data[key]
       area.data = data
       this.notify(area.name, true)
     }
   }
-
   render() {
     return React.Children.only(this.props.children)
   }

@@ -32,7 +32,7 @@ const throughAgent = (area, key) => (AgentComponent) => {
       this.data = {}
     }
 
-    componentWillMount = () => {
+    componentDidMount = () => {
       this.update(this.data)
     }
 
@@ -58,20 +58,14 @@ const throughAgent = (area, key) => (AgentComponent) => {
     }
 
     update = (data) => {
-      const add = Object.keys(data).filter(
-        key => !this.data.hasOwnProperty(key)
-      )
       const remove = Object.keys(this.data).filter(
         key => !data.hasOwnProperty(key)
       )
       remove.forEach(
         key => this.context.through.remove(area, key)
       )
-      add.forEach(
-        key => this.context.through.add(area, key)
-      )
       Object.keys(data).forEach(
-        key => this.context.through.update(area, key, data[key], true)
+        key => this.context.through.install(area, key, data[key], true)
       )
       this.data = data
     }
