@@ -1,13 +1,15 @@
 import React from 'react'
-import throughContainer from './throughContainer'
+import Through from './Through'
 
 const throughDirect =
   areaName =>
   Component =>
-  throughContainer(areaName)(
-    ({[areaName]: area, ...rest}) => (
-      <Component {...rest} {...(area && area.default || {})} />
-    )
+  props => (
+    <Through area={areaName} direct default={{}}>
+      { data =>
+        <Component {...props} {...data}/>
+      }
+    </Through>
   )
 
 export default throughDirect

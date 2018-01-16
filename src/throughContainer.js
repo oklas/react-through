@@ -1,3 +1,15 @@
-import React, { Children } from 'react'
+import React from 'react'
+import Through from './Through'
 
-export default from './Through'
+const throughContainer =
+  areaName =>
+  Component =>
+  props => (
+    <Through area={areaName}>
+      { data =>
+        <Component {...rest} {...{[areaName]: data}} />
+      }
+    </Through>
+  )
+
+export default throughContainer
