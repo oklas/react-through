@@ -22,14 +22,17 @@ And then all what you need is just to instantiate one or more created
 # Synopsis
 
 ``` javascript
-  <App>
-    <Header>
-      Your ballance: <IndicatorContainer/> USD
-    </Header>
+  const Header = () => (
+    Your ballance: <IndicatorContainer/> USD
+  )
 
-    <Content>
-      <IndicatorAgent ballance=1000 />
-    </Content>
+  const Content = () => (
+    <IndicatorAgent ballance=1000 />
+  )
+
+  <App>
+    <Header />
+    <Content />
   </App>
 ```
 
@@ -169,7 +172,7 @@ export default throughAgent('areaAdvanced', 'bearingKey')(MyAdvancedAgent)
 export default throughAgent('areaAdvanced', props => props.bearingKey)(MyAdvancedAgent)
 ```
 
-# Known usage
+# See also
 
 * [react-breadcrumbs-dynamic](https://github.com/oklas/react-breadcrumbs-dynamic)
 
