@@ -79,7 +79,10 @@ export default class ThroughProvider extends React.Component {
       if(
         !( typeof area === 'string' || area instanceof String ) ||
         !( typeof key === 'string' || key instanceof String ) ||
-        !( props instanceof Object && !(props instanceof Array) )
+        !( props instanceof Object &&
+          !(props instanceof Array) &&
+          !(props instanceof Function)
+        )
       ) {
         throw new Error(
           "react-through: type error: " +
