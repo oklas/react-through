@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 export ThroughProvider from './ThroughProvider'
 export throughContainer from './throughContainer'
+export throughDirect from './throughDirect'
 export throughAgent from './throughAgent'
 export throughAgentFactory from './throughAgentFactory'
 export throughInterface from './throughInterface'
