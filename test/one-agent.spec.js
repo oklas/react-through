@@ -24,18 +24,18 @@ const TestOneContainer = throughDirect('test_one')(TestOneComponent)
 
 const TestOneAgent = throughAgentFactory('test_one')
 
-const TestOneApp = props => (
+const TestOneApp = ({value, sameAgentDuplicateTwice}) => (
   <ThroughProvider>
     <main>
       <header>
         <TestOneContainer />
       </header>
       <article>
-        <TestOneAgent value={1+props.value} />
-        { props.sameAgentDuplicateTwice &&
+        <TestOneAgent value={1 + value} />
+        { sameAgentDuplicateTwice &&
           <section>
-            <TestOneAgent value={2+props.value} />
-            <TestOneAgent value={3+props.value} />
+            <TestOneAgent value={2 + value} />
+            <TestOneAgent value={3 + value} />
           </section>
         }
       </article>
@@ -43,12 +43,16 @@ const TestOneApp = props => (
   </ThroughProvider>
 )
 
-
 describe('test with one agent in default area', function() {
   it("transfer and update the data", function() {
     const wrapper = mount(<TestOneApp value={10}/>)
 
     expect(wrapper.find('header').find('b').at(0).props().children).to.equal(11)
+
+    wrapper.setProps({value: 20})
+    wrapper.update()
+
+    expect(wrapper.find('header').find('b').at(0).props().children).to.equal(21)
 
     wrapper.unmount()
   })
