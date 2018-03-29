@@ -11,10 +11,11 @@ import {
   throughAgentFactory,
 } from '../src'
 
-import ErrorBoundary from './ErrorBoundary'
+import spec from './base.spec-set'
 
 enzyme.configure({ adapter: new Adapter() });
 jest.dontMock('../src')
+
 
 const TestComponent = ({b,i,u}) => (
   <div>
@@ -50,42 +51,8 @@ const TestApp = ({value, show_b, show_i, show_u}) => (
   </ThroughProvider>
 )
 
-describe('test with multiple agents', function() {
-  it("transfer and update the data", function() {
-    const wrapper = mount(<TestApp show_b value={10}/>)
-
-    expect(wrapper.find('header').find('b')).to.have.length(1)
-    expect(wrapper.find('header').find('i')).to.have.length(0)
-    expect(wrapper.find('header').find('u')).to.have.length(0)
-    expect(wrapper.find('header').find('b').at(0).props().children).to.equal(11)
-
-    wrapper.setProps({show_b: false, show_i: true})
-    wrapper.update()
-
-    expect(wrapper.find('header').find('b')).to.have.length(0)
-    expect(wrapper.find('header').find('i')).to.have.length(1)
-    expect(wrapper.find('header').find('u')).to.have.length(0)
-    expect(wrapper.find('header').find('i').at(0).props().children).to.equal(12)
-
-    wrapper.setProps({show_b: true, show_i: false, show_u: true})
-    wrapper.update()
-
-    expect(wrapper.find('header').find('b')).to.have.length(1)
-    expect(wrapper.find('header').find('i')).to.have.length(0)
-    expect(wrapper.find('header').find('u')).to.have.length(1)
-    expect(wrapper.find('header').find('b').at(0).props().children).to.equal(11)
-    expect(wrapper.find('header').find('u').at(0).props().children).to.equal(13)
-
-    wrapper.setProps({show_b: true, show_i: true, show_u: true})
-    wrapper.update()
-
-    expect(wrapper.find('header').find('b')).to.have.length(1)
-    expect(wrapper.find('header').find('i')).to.have.length(1)
-    expect(wrapper.find('header').find('u')).to.have.length(1)
-    expect(wrapper.find('header').find('b').at(0).props().children).to.equal(11)
-    expect(wrapper.find('header').find('i').at(0).props().children).to.equal(12)
-    expect(wrapper.find('header').find('u').at(0).props().children).to.equal(13)
-
-    wrapper.unmount()
-  })
+describe('area - base spec-set', function() {
+  spec(TestApp)
 })
+
+
