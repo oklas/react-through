@@ -8,6 +8,5 @@ export throughAgent from './throughAgent'
 export throughAgentFactory from './throughAgentFactory'
 export throughInterface from './throughInterface'
 export propsFromProp from './propsFromProp'
-
-export const Dummy = () => null
-export const Item = () => null
+export Item from './Item'
+export Dummy from './Dummy'

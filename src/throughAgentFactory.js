@@ -2,6 +2,7 @@ import React, { Children } from 'react'
 import PropTypes from 'prop-types'
 
 import throughAgent from './throughAgent'
+import Item from './Item'
 
 const throughAgentFactory = (area, key) => {
 
@@ -10,8 +11,6 @@ const throughAgentFactory = (area, key) => {
       "type error: throughAgentFactory(area:string, key:string|function)"
     )
   }
-
-  const Item = () => null
 
   class ThroughAgent extends React.Component {
     static propTypes = {
