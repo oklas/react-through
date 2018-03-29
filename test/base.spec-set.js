@@ -39,6 +39,13 @@ export default function spec(TestApp) {
     expect(wrapper.find('header').find('i').at(0).props().children).to.equal(12)
     expect(wrapper.find('header').find('u').at(0).props().children).to.equal(13)
 
+    wrapper.setProps({value: 0, show_b: false, show_i: false, show_u: false})
+    wrapper.update()
+    expect(wrapper.find('header').find('b')).to.have.length(0)
+    expect(wrapper.find('header').find('i')).to.have.length(0)
+    expect(wrapper.find('header').find('u')).to.have.length(0)
+
+
     wrapper.unmount()
   })
 
