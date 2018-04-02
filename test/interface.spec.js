@@ -33,6 +33,10 @@ class TestInterfaceComponent extends React.Component {
     this.props.test_area.remove("item")
   }
 
+  wrongUpdateUnknownKey = () => {
+    this.props.test_area.update('not-added', {})
+  }
+
   wrongInstallToKey = () => {
     this.props.test_area.add([])
     this.props.test_area.update([], {})
@@ -63,6 +67,7 @@ class TestInterfaceComponent extends React.Component {
         <button className="addItem" onClick={this["addItem"]} />
         <button className="changeItem" onClick={this["changeItem"]} />
         <button className="removeItem" onClick={this["removeItem"]} />
+        <button className="wrongUpdateUnknownKey" onClick={this["wrongUpdateUnknownKey"]} />
         <button className="wrongInstallToKey" onClick={this["wrongInstallToKey"]} />
         <button className="wrongInstallPropsType" onClick={this["wrongInstallPropsType"]} />
         <button className="goodInstallToKey" onClick={this["goodInstallToKey"]} />
@@ -122,6 +127,15 @@ describe('breadcrumbs api interface', function() {
     }).to.throw()
     expect(() => {
       wrapper.find('.wrongInstallPropsType').simulate('click')
+    }).to.throw()
+    wrapper.unmount()
+  })
+
+  it("throw in update when key is unknown", function() {
+    const wrapper = mount(<TestApp/>)
+    expect(wrapper.find('.wrongUpdateUnknownKey')).to.have.length(1)
+    expect(() => {
+      wrapper.find('.wrongUpdateUnknownKey').simulate('click')
     }).to.throw()
     wrapper.unmount()
   })
