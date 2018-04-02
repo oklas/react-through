@@ -37,6 +37,9 @@ const throughContainer = (area) => (ThroughComponent) => {
     doUpdate = (data, syncUpdate) => {
       this.data = data
       ++this.dataNum
+      if( !this.timer && this.dataNum > MAX_DATA_NUM ) {
+        this.dataNum = 0
+      }
 
       if( syncUpdate ) {
         if(this.canSetState) {
@@ -47,9 +50,6 @@ const throughContainer = (area) => (ThroughComponent) => {
 
       if( !this.timer ) {
         this.timer = setTimeout(() => {
-          if(this.dataNum > MAX_DATA_NUM ) {
-            this.dataNum = 0
-          }
           if(this.canSetState) {
             this.setState({dataNum: this.dataNum})
           }
