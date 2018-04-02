@@ -57,21 +57,21 @@ class TestInterfaceComponent extends React.Component {
     this.props.test_area.update(new String('/'), {})
   }
 
-  buttonConfig(name) {
-    return { className: name, onClick: this[name]}
+  renderButton(name) {
+    return <button className={name} onClick={this[name]} />
   }
 
   render() {
     return (
       <div>
-        <button className="addItem" onClick={this["addItem"]} />
-        <button className="changeItem" onClick={this["changeItem"]} />
-        <button className="removeItem" onClick={this["removeItem"]} />
-        <button className="wrongUpdateUnknownKey" onClick={this["wrongUpdateUnknownKey"]} />
-        <button className="wrongInstallToKey" onClick={this["wrongInstallToKey"]} />
-        <button className="wrongInstallPropsType" onClick={this["wrongInstallPropsType"]} />
-        <button className="goodInstallToKey" onClick={this["goodInstallToKey"]} />
-        <button className="goodInstallToStringKey" onClick={this["goodInstallToStringKey"]} />
+        {this.renderButton("addItem")}
+        {this.renderButton("changeItem")}
+        {this.renderButton("removeItem")}
+        {this.renderButton("wrongUpdateUnknownKey")}
+        {this.renderButton("wrongInstallToKey")}
+        {this.renderButton("wrongInstallPropsType")}
+        {this.renderButton("goodInstallToKey")}
+        {this.renderButton("goodInstallToStringKey")}
       </div>
     )
   }
