@@ -104,20 +104,12 @@ export default class ThroughProvider extends React.Component {
 
     const prevProps = area.data[key] || {}
 
-    if( this.props.shouldBreadcrumbsUpdate ) {
-      const diff = this.props.shouldBreadcrumbsUpdate(prevProps, props)
+    const [diff, comp] = this._diffAndComplicatedCounts(prevProps, props)
 
-      if( !diff ) return
+    if( !diff ) return
 
-      syncUpdate = true
-    } else {
-      const [diff, comp] = this._diffAndComplicatedCounts(prevProps, props)
-
-      if( !diff ) return
-
-      if( undefined === syncUpdate ) {
-        syncUpdate = !comp
-      }
+    if( undefined === syncUpdate ) {
+      syncUpdate = !comp
     }
 
     const data = Object.assign({}, area.data)
