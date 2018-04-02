@@ -6,7 +6,7 @@ const throughArea =
   Component =>
   throughContainer(areaName)(
     ({[areaName]: area, ...rest}) => (
-      <Component {...rest} {...(area || {})} />
+      <Component {...rest} {...(area)} />
     )
   )
 

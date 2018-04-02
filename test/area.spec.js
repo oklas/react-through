@@ -55,4 +55,14 @@ describe('area - base spec-set', function() {
   spec(TestApp)
 })
 
-
+describe('area - specific specs', function() {
+  it("does not crash with unknown area", function() {
+    const TestContainer = throughArea('not-exists')(TestComponent)
+    const wrapper = mount(
+      <ThroughProvider>
+        <TestContainer />
+      </ThroughProvider>
+    )
+    wrapper.unmount()
+  })
+})
