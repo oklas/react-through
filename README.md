@@ -1,6 +1,11 @@
 # react-through
 
 [![Npm package](https://img.shields.io/npm/v/react-through.svg?style=flat)](https://npmjs.com/package/react-through)
+[![Npm downloads](https://img.shields.io/npm/dm/react-through.svg?style=flat)](https://npmjs.com/package/react-through)
+[![Travis build status](http://img.shields.io/travis/oklas/react-through.svg?style=flat)](https://travis-ci.org/oklas/react-through)
+[![Test Coverage](https://img.shields.io/codecov/c/github/oklas/react-through.svg)](https://codecov.io/gh/oklas/react-through)
+[![Dependency Status](https://david-dm.org/oklas/react-through.svg)](https://david-dm.org/oklas/react-through)
+
 
 ***
 
@@ -27,7 +32,7 @@ And then all what you need is just to instantiate one or more created
   )
 
   const Content = () => (
-    <IndicatorAgent ballance=1000 />
+    <IndicatorAgent balance=1000 />
   )
 
   <App>
