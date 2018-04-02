@@ -33,6 +33,11 @@ class TestInterfaceComponent extends React.Component {
     this.props.test_area.remove("item")
   }
 
+  addComponenItem = () => {
+    this.props.test_area.add('item')
+    this.props.test_area.update('item', {value: <i>tag</i>})
+  }
+
   wrongUpdateUnknownKey = () => {
     this.props.test_area.update('not-added', {})
   }
@@ -67,6 +72,7 @@ class TestInterfaceComponent extends React.Component {
         {this.renderButton("addItem")}
         {this.renderButton("changeItem")}
         {this.renderButton("removeItem")}
+        {this.renderButton("addComponenItem")}
         {this.renderButton("wrongUpdateUnknownKey")}
         {this.renderButton("wrongInstallToKey")}
         {this.renderButton("wrongInstallPropsType")}
@@ -115,6 +121,18 @@ describe('breadcrumbs api interface', function() {
     wrapper.find('.removeItem').simulate('click')
     expect(wrapper.find('b')).to.have.length(0)
 
+    wrapper.unmount()
+  })
+
+  it("can pass component", function() {
+    jest.useFakeTimers()
+    const wrapper = mount(<TestApp/>)
+    expect(wrapper.find('.addComponenItem')).to.have.length(1)
+    wrapper.find('.addComponenItem').simulate('click')
+    jest.runAllTimers()
+    wrapper.update()
+    expect(wrapper.find('i')).to.have.length(1)
+    expect(wrapper.find('i').at(0).props().children).to.equal('tag')
     wrapper.unmount()
   })
 
