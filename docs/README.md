@@ -1,10 +1,15 @@
-# Table of Contents
+# Table of contents
 
-
-
-* [README](/../README.md)
-
-* [Introduction](/docs/README.md)
-
-
-
+* [README](../README.md)
+* [Introduction](introduction/README.md)
+  * [Motivation](introduction/Motivation.md)
+  * [Core Concepts](introduction/CoreConcepts.md)
+* [Basics](basics/README.md)
+  * [Installation and setup](basics/Setup.md)
+  * [Direct Mapping](basics/Direct.md)
+  * [Many Agents](basics/ManyAgents.md)
+* [Advanced](advanced/README.md)
+  * [Advanced Agent](advanced/Agent.md)
+  * [Multiarea Container](advanced/Container.md)
+* [Glossary](Glossary.md)
+* [API Reference](api/README.md)
