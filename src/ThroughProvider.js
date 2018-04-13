@@ -1,5 +1,6 @@
 import React, { Children } from 'react'
 import PropTypes from 'prop-types'
+import countDiffAndComplex from './countDiffAndComplex'
 
 
 export default class ThroughProvider extends React.Component {
@@ -61,19 +62,6 @@ export default class ThroughProvider extends React.Component {
     }
   }
 
-  _diffAndComplicatedCounts(prevProps, props) {
-    const keys = Object.keys(prevProps).concat(Object.keys(props))
-    // reflect types in the documentation if changed
-    const quicks = [ 'string', 'number', 'undefined', 'boolean', 'symbol' ]
-    const [diff, comp] = keys.reduce( (stat,k) => {
-      return [
-        stat[0] + (prevProps[k] !== props[k] ? 1 : 0),
-        stat[1] + (!quicks.includes(typeof(props[k])) ? 1 : 0)
-      ]
-    }, [0, 0])
-    return [diff, comp]
-  }
-
   checkArgs(area, key, props) {
     if (process.env.NODE_ENV !== 'production') {
       if(
@@ -104,7 +92,7 @@ export default class ThroughProvider extends React.Component {
 
     const prevProps = area.data[key] || {}
 
-    const [diff, comp] = this._diffAndComplicatedCounts(prevProps, props)
+    const [diff, comp] = countDiffAndComplex(prevProps, props)
 
     if( !diff ) return
 
