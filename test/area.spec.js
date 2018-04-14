@@ -8,6 +8,7 @@ import {
   ThroughProvider,
   throughArea,
   throughContainer,
+  createAgent,
   createAdvAgent,
 } from '../src'
 
@@ -27,32 +28,43 @@ const TestComponent = ({b,i,u}) => (
 
 const TestContainer = throughArea('test_area')(TestComponent)
 
-const TestAgent = createAdvAgent(new String('test_area'), 'id' )
-const TestAgentB = createAdvAgent('test_area', props => 'b')
+function createTestApp(agentFactoryFunction) {
+  const TestAgent = agentFactoryFunction(new String('test_area'), 'id' )
+  const TestAgentB = agentFactoryFunction('test_area', props => 'b')
 
-const TestApp = ({value, show_b, show_i, show_u}) => (
-  <ThroughProvider>
-    <main>
-      <header>
-        <TestContainer />
-      </header>
-      <article>
-        { show_b &&
-          <TestAgentB value={1 + value} />
-        }
-        { show_i &&
-          <TestAgent id='i' value={2 + value} />
-        }
-        { show_u &&
-          <TestAgent id='u' value={3 + value} />
-        }
-      </article>
-    </main>
-  </ThroughProvider>
-)
+  const TestApp = ({value, show_b, show_i, show_u}) => (
+    <ThroughProvider>
+      <main>
+        <header>
+          <TestContainer />
+        </header>
+        <article>
+          { show_b &&
+            <TestAgentB value={1 + value} />
+          }
+          { show_i &&
+            <TestAgent id='i' value={2 + value} />
+          }
+          { show_u &&
+            <TestAgent id='u' value={3 + value} />
+          }
+        </article>
+      </main>
+    </ThroughProvider>
+  )
 
-describe('area - base spec-set', function() {
-  spec(TestApp)
+  return TestApp
+}
+
+
+describe('area with createAgent - base spec-set', function() {
+  const TestApp = createTestApp(createAgent)
+  spec(TestApp, true)
+})
+
+describe('area with createAdvAgent - base spec-set', function() {
+  const TestApp = createTestApp(createAdvAgent)
+  spec(TestApp, false)
 })
 
 describe('area - specific specs', function() {

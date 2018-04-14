@@ -27,9 +27,6 @@ const TestComponent = ({b,i,u}) => (
 
 const TestContainer = throughArea('test_area')(TestComponent)
 
-const TestAgent = createAdvAgent(new String('test_area'), 'id' )
-const TestAgentB = createAdvAgent('test_area', props => 'b')
-
 const TestApp = ({value, show_b, show_i, show_u}) => (
   <ThroughProvider>
     <main>
@@ -43,6 +40,7 @@ const TestApp = ({value, show_b, show_i, show_u}) => (
   </ThroughProvider>
 )
 
+
 describe('advanced - base spec-set', function() {
-  spec(TestApp)
+  spec(TestApp, false)
 })
