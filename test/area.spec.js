@@ -22,7 +22,7 @@ const TestComponent = ({b,i,u}) => (
   <div>
     { b && <b>{b.value}</b> }
     { i && <i>{i.value}</i> }
-    { u && <u>{u.value}</u> }
+    { u && u.children }
   </div>
 )
 
@@ -46,7 +46,9 @@ function createTestApp(agentFactoryFunction) {
             <TestAgent id='i' value={2 + value} />
           }
           { show_u &&
-            <TestAgent id='u' value={3 + value} />
+            <TestAgent id='u'>
+              <u>{3 + value}</u>
+            </TestAgent>
           }
         </article>
       </main>
@@ -75,6 +77,37 @@ describe('area - specific specs', function() {
         <TestContainer />
       </ThroughProvider>
     )
+    wrapper.unmount()
+  })
+})
+
+const useFakeTimers = jest.useFakeTimers
+const runAllTimers = jest.runAllTimers
+
+describe('area with createAdvAgent - specific specs', function() {
+
+  it("it does not transfer until timers is not done", function() {
+    useFakeTimers()
+    const TestApp = createTestApp(createAgent)
+    const wrapper = mount(<TestApp value={10}/>)
+
+    expect(wrapper.find('header').find('u')).to.have.length(0)
+
+    wrapper.setProps({show_u: true})
+    wrapper.update()
+
+    expect(wrapper.find('header').find('u')).to.have.length(0)
+
+    runAllTimers()
+    wrapper.update()
+
+    expect(wrapper.find('header').find('u')).to.have.length(1)
+    expect(wrapper.find('header').find('u').at(0).props().children).to.equal(13)
+
+    wrapper.setProps({show_u: false})
+    wrapper.update()
+
+    expect(wrapper.find('header').find('u')).to.have.length(0)
     wrapper.unmount()
   })
 })
