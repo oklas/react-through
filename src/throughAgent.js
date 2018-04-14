@@ -40,29 +40,29 @@ const throughAgent = (area, key) => (AgentComponent) => {
       this.update({})
     }
 
-    item = (elem) => {
+    item = (elem, syncUpdate = undefined) => {
       const key = elem && getKey(elem.props)
       const data = (!elem || !key) ?
         {} : { [key]: elem.props }
-      this.update(data)
+      this.update(data, syncUpdate)
     }
 
-    items = (elem) => {
+    items = (elem, syncUpdate = undefined) => {
       const data = {}
       React.Children.forEach(elem.props.children, function(elem) {
         const key = elem && getKey(elem.props)
         if(!elem || !key) { return }
         data[key] = elem.props
       })
-      this.update(data)
+      this.update(data, syncUpdate)
     }
 
-    update = (data) => {
+    update = (data, syncUpdate = undefined) => {
       const add = Object.keys(data).filter(
-        key => !this.data.hasOwnProperty(key)
+        key => !Object.prototype.hasOwnProperty.call(this.data, key)
       )
       const remove = Object.keys(this.data).filter(
-        key => !data.hasOwnProperty(key)
+        key => !Object.prototype.hasOwnProperty.call(data, key)
       )
       remove.forEach(
         key => this.context.through.remove(area, key)
@@ -71,7 +71,7 @@ const throughAgent = (area, key) => (AgentComponent) => {
         key => this.context.through.add(area, key)
       )
       Object.keys(data).forEach(
-        key => this.context.through.update(area, key, data[key], true)
+        key => this.context.through.update(area, key, data[key], syncUpdate)
       )
       this.data = data
     }

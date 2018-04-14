@@ -5,7 +5,8 @@ import hasDiff from './hasDiff'
 import throughAgent from './throughAgent'
 import Item from './Item'
 
-const throughAgentFactory = (area, key) => {
+// this function was documented and my be in use
+const throughAgentFactory = (area, key, syncUpdate = undefined) => {
 
   if( !(typeof area === 'string' || area instanceof String ) ) {
     throw new Error(
@@ -32,7 +33,7 @@ const throughAgentFactory = (area, key) => {
       const {[area]: notused, ...data} = props
       props[area].item(
         <Item {...data} />
-      )
+      , syncUpdate)
     }
 
     render() {

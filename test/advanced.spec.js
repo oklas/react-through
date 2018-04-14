@@ -7,7 +7,7 @@ import { expect } from 'chai'
 import {
   ThroughProvider,
   throughArea,
-  throughAgentFactory,
+  createAdvAgent,
 } from '../src'
 
 import AdvancedAgent from './AdvancedAgent'
@@ -27,8 +27,8 @@ const TestComponent = ({b,i,u}) => (
 
 const TestContainer = throughArea('test_area')(TestComponent)
 
-const TestAgent = throughAgentFactory(new String('test_area'), 'id' )
-const TestAgentB = throughAgentFactory('test_area', props => 'b')
+const TestAgent = createAdvAgent(new String('test_area'), 'id' )
+const TestAgentB = createAdvAgent('test_area', props => 'b')
 
 const TestApp = ({value, show_b, show_i, show_u}) => (
   <ThroughProvider>

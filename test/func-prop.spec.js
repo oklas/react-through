@@ -8,7 +8,7 @@ import {
   ThroughProvider,
   throughDirect,
   throughContainer,
-  throughAgentFactory,
+  createAdvAgent,
 } from '../src'
 
 import ErrorBoundary from './ErrorBoundary'
@@ -22,7 +22,7 @@ const TestOneComponent = ({handler}) => (
 
 const TestOneContainer = throughDirect('test_one')(TestOneComponent)
 
-const TestOneAgent = throughAgentFactory('test_one')
+const TestOneAgent = createAdvAgent('test_one')
 
 const TestOneApp = ({handler}) => (
   <ThroughProvider>

@@ -29,7 +29,7 @@ export default class ThroughProvider extends React.Component {
   }
 
   area = (area) => {
-    if( !this.areas.hasOwnProperty(area) ) {
+    if( !Object.prototype.hasOwnProperty.call(this.areas, area) ) {
       this.areas[area] = {
         name: area,
         listeners: [],
@@ -124,7 +124,7 @@ export default class ThroughProvider extends React.Component {
     count = count ? count - 1 : 0
     area.counters[key] = count
 
-    if( !count && area.data.hasOwnProperty(key) ) {
+    if( !count && Object.prototype.hasOwnProperty.call(area.data, key) ) {
       const data = Object.assign({}, area.data)
       delete area.counters[key]
       delete data[key]

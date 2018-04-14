@@ -8,7 +8,6 @@ import {
   ThroughProvider,
   throughArea, 
   throughInterface,
-  throughAgentFactory,
 } from '../src'
 
 
