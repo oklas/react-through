@@ -1,7 +1,7 @@
 import React, { Children } from 'react'
 import PropTypes from 'prop-types'
-import countDiffAndComplex from './countDiffAndComplex'
-
+import hasDiff from './hasDiff'
+import hasComplex from './hasComplex'
 
 export default class ThroughProvider extends React.Component {
   static childContextTypes = {
@@ -9,7 +9,6 @@ export default class ThroughProvider extends React.Component {
   }
 
   static propTypes = {
-    shouldBreadcrumbsUpdate: PropTypes.func,
     children: PropTypes.element,
   }
 
@@ -92,12 +91,10 @@ export default class ThroughProvider extends React.Component {
 
     const prevProps = area.data[key] || {}
 
-    const [diff, comp] = countDiffAndComplex(prevProps, props)
-
-    if( !diff ) return
+    if( !hasDiff(prevProps, props) ) return
 
     if( undefined === syncUpdate ) {
-      syncUpdate = !comp
+      syncUpdate = !hasComplex(props)
     }
 
     const data = Object.assign({}, area.data)

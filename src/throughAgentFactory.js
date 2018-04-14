@@ -1,6 +1,7 @@
 import React, { Children } from 'react'
 import PropTypes from 'prop-types'
 
+import hasDiff from './hasDiff'
 import throughAgent from './throughAgent'
 import Item from './Item'
 
@@ -22,12 +23,7 @@ const throughAgentFactory = (area, key) => {
     }
 
     componentWillReceiveProps(nextProps) {
-      const keys = Object.keys(nextProps).concat(Object.keys(this.props))
-      const skip = [area]
-      const differences = keys.filter(
-        k => (!skip.includes(k) && this.props[k] !== nextProps[k])
-      ).length
-      if( differences ) {
+      if( hasDiff(nextProps, this.props) ) {
         this.configureItem(nextProps)
       }
     }
