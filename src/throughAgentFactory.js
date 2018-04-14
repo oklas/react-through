@@ -2,6 +2,7 @@ import React, { Children } from 'react'
 import PropTypes from 'prop-types'
 
 import hasDiff from './hasDiff'
+import hasComplex from './hasComplex'
 import throughAgent from './throughAgent'
 import Item from './Item'
 
@@ -29,12 +30,21 @@ const throughAgentFactory = (area, key, syncUpdate = undefined) => {
       }
     }
 
-    configureItem = (props) => {
-      const {[area]: notused, ...data} = props
-      props[area].item(
-        <Item {...data} />
-      , syncUpdate)
-    }
+    configureItem = syncUpdate === undefined ?
+      (props) => {
+        const {[area]: notused, ...data} = props
+        const syncUpdate = !hasComplex(data)
+        props[area].item(
+          <Item {...data} />
+        , syncUpdate)
+      }
+      :
+      (props) => {
+        const {[area]: notused, ...data} = props
+        props[area].item(
+          <Item {...data} />
+        )
+      }
 
     render() {
       return null
