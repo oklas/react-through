@@ -2,7 +2,7 @@
   "name": "react-through",
   "version": "1.0.4",
   "description": "Declarative data transfer through react tree",
-  "main": "dist/src/index.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/oklas/react-through.git"
@@ -71,7 +71,7 @@
     "setupFiles": ["raf/polyfill"]
   },
   "scripts": {
-    "build": "babel -d dist/ src/*",
+    "build": "babel -d lib/ src",
     "prepublish": "npm run build",
     "test": "jest --coverage",
     "test-debug": "jest --bail --verbose"
