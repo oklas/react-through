@@ -6,7 +6,7 @@ import hasComplex from './hasComplex'
 import throughAgent from './throughAgent'
 import Item from './Item'
 
-// this function was documented and my be in use
+// this function with *two* params was documented and may be in use
 const throughAgentFactory = (area, key, syncUpdate = undefined) => {
 
   if( !(typeof area === 'string' || area instanceof String ) ) {

@@ -40,9 +40,9 @@ The simplest way to create agent just call agent factory function
 with same through area name like this:
 
 ```js
-import {throughAgentFactory} from 'react-through'
+import {createAgent} from 'react-through'
 
-const IndicatorAgent = throughAgentFactory('indicator')
+const IndicatorAgent = createAgent('indicator')
 
 ```
 

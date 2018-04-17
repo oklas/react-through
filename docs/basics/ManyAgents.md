@@ -8,15 +8,15 @@ some prop name (bearing prop) which contain uniquie idetifier (bearing key).
 
 ## Bearing key and prop
 
-The `throughAgentFactory` which create agent component receive a through area
-as first param. The second param may be name of bearing prop or beraing key
-builder function.
+The `createAgent` which create agent component receive a through area as first
+param. The second param may be name of bearing prop or beraing key builder
+function.
 
 When agent is created with a name of bering prop at second param the uniquie
 value of agent will be taken from that prop:
 
 ```js
-const Agent = throughAgentFactory('area', 'id')
+const Agent = createAgent('area', 'id')
 ```
 
 Now if we render two agent with different key in prop `id`:
@@ -61,5 +61,5 @@ constant value or math or any other. For example to use bearing key based on
 two props `x` and `y` the through agent may be created like this:
 
 ```js
-const Agent = throughAgentFactory( 'area', ({x, y}) => x+' '+y )
+const Agent = createAgent( 'area', ({x, y}) => x + '_' + y )
 ```
