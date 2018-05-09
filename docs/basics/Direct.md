@@ -8,8 +8,8 @@ before read this.
 Direct mapping is most simple usage. The `direct` means all props of your
 agent is directly mapped to destination associated container.
 
-For example if area name is `indicator` and bearing key name of agent is
-`balance` the through container created with `throughDirect` like this:
+For example let's suppose area name is `indicator`. Then through container
+may be created with `throughDirect` like this:
 
 ```js
 import {throughDirect} from 'react-through'
@@ -23,7 +23,7 @@ const Indicator = (props) => (
 export default throughDirect('indicator')(Indicator)
 ```
 
-And ballance is rendered at top bar of our application:
+this ballance indicator may be rendered at application top bar:
 
 ```js
 const  TopBar = (props) => (
@@ -56,11 +56,11 @@ communication is runing.
 Only one such direct agent may be rendered in through area. But any number
 of through containers may be created for same area.
 
-If you need multiple agents for same area it need to organize a way haw to
+If you need multiple agents for same area it need to organize a way how to
 differentiate agents from each other. Read about that in next chapter.
 
 Agent itself renders nothing but you can wrap it in component or you can
 create advanced agents described in advanced section.
 
 Secong argument of function `throughDirect` may be name of bearing prop or
-bearing key builder function which is described in next section.
+bearing key builder function which is described in next sections.
