@@ -53,8 +53,8 @@ communication is runing.
   <IndicatorAgent balance="1000" />
 ```
 
-Only one such direct agent may be rendered in through area. But through
-containers for that area may be numbers creaed any number.
+Only one such direct agent may be rendered in through area. But any number
+of through containers may be created for same area.
 
 If you need multiple agents for same area it need to organize a way haw to
 differentiate agents from each other. Read about that in next chapter.

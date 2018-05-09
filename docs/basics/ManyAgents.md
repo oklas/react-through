@@ -8,9 +8,9 @@ some prop name (bearing prop) which contain uniquie idetifier (bearing key).
 
 ## Bearing key and prop
 
-The `createAgent` which create agent component receive a through area as first
-param. The second param may be name of bearing prop or beraing key builder
-function.
+The `createAgent` function create agent component. It receive a through area
+name as first param. The second param may be name of bearing prop or beraing
+key builder function.
 
 When agent is created with a name of bering prop at second param the uniquie
 value of agent will be taken from that prop:
@@ -28,7 +28,7 @@ Now if we render two agent with different key in prop `id`:
   </div>
 ```
 
-Then we can receive all that props from all agents of the area using
+Then we receive all that props from all agents of the area using
 `throughArea` higher-order components creator function:
 
 
@@ -51,10 +51,11 @@ of `throughDirect` which used to direct mapping of agent props to container.
 
 ## Bearing key builder
 
-The function `throughArea` accepts bearing key builder function. The bearing
-key builder function acceps props of its agent and must return value of bearing
-key. If second argument is not specified then bearing key will be identity
-equal string value `default`. Default valu is used by Direct mapping.
+The function `throughArea` accepts bearing key builder function as second
+argument. The bearing key builder function acceps props of its agent and must
+return value of bearing key. If second argument is not specified then bearing
+key will be identity equal string value `default`. Default value is used by
+Direct mapping.
 
 It is possible to define bearing key based on number of props or add some
 constant value or math or any other. For example to use bearing key based on
