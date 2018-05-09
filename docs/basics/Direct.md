@@ -23,7 +23,7 @@ const Indicator = (props) => (
 export default throughDirect('indicator')(Indicator)
 ```
 
-We render ballance at top bar of our application:
+And ballance is rendered at top bar of our application:
 
 ```js
 const  TopBar = (props) => (
@@ -50,13 +50,14 @@ Now render our `IndicatorAgent` at any place of react tree and declarative
 communication is runing.
 
 ```js
-  <IndicatorAgent ballance="1000" />
+  <IndicatorAgent balance="1000" />
 ```
 
-Only one such agent may be rendered in through area. Any number of through
-containers may be creaed for same area. If you need multiple agents for same
-area it need to organize a way haw to differentiate agents from each other.
-Read about that in next chapter.
+Only one such direct agent may be rendered in through area. But through
+containers for that area may be numbers creaed any number.
+
+If you need multiple agents for same area it need to organize a way haw to
+differentiate agents from each other. Read about that in next chapter.
 
 Agent itself renders nothing but you can wrap it in component or you can
 create advanced agents described in advanced section.
