@@ -25,7 +25,7 @@ And then all what you need is just to instantiate one or more created
 
 ***
 
-Read the **[Documentation](react-through.js.org)**
+Read the **[Documentation](https://react-through.js.org)**
 
 # Synopsis
 
@@ -43,13 +43,6 @@ Read the **[Documentation](react-through.js.org)**
     <Content />
   </App>
 ```
-
-
-
-
-# See also
-
-* [react-breadcrumbs-dynamic](https://github.com/oklas/react-breadcrumbs-dynamic)
 
 
 ## LICENSE
