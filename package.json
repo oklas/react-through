@@ -1,7 +1,7 @@
 {
   "name": "react-through",
   "version": "1.0.5",
-  "description": "Declarative data transfer through react tree",
+  "description": "Declarative data mapping through react tree",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
@@ -14,6 +14,7 @@
     "props",
     "data",
     "transfer",
+    "mapping",
     "exchange"
   ],
   "author": "Serguei Okladnikov <oklaspec@gmail.com>",

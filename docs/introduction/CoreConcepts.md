@@ -1,7 +1,7 @@
 # Core Concepts
 
 The core concepts is simple and base idea is to use new type of react component
-— agent component. The **agent** is an intermediator which transfer its props
+— agent component. The **agent** is an intermediator which maps its props
 through react tree to another component which receive that props and renders
 content based on received props.
 

@@ -3,23 +3,23 @@
 
 ## Through Communication Center
 
-Transferring data is carried out through **communication center** which is placed
+Mapping data is carried out through **communication center** which is placed
 at the root of react tree. It is accessble via good old react conext like. And
-pub/sub is used as direct data transfer. However that are fully internal
+pub/sub is used as direct data mapping. However that are fully internal
 process and no need to know and work with that manually.
 
 
 ## Through Area
 
 **Area** — is named space for some application `aspect` in which data is
-transferred from set of `agents` located at any place in the react tree
+mapped from set of `agents` located at any place in the react tree
 and me be received by any amont of `through components`.
 
 
 ## Through Agent
 
 **Agent** — is a new type of react component. Agent is an intermediator
-component which transfer its props (or some of them) through react tree to
+component which maps its props (or some of them) through react tree to
 another component which receive that props and render content based on received
 props. Agent component may or may not render content in place where it rendered.
 

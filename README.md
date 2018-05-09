@@ -1,6 +1,6 @@
 # react-through
 
-## Declarative data transfer through react tree
+## Declarative data mapping through react tree
 
 **Extremal flexible and effective way to communicate between components.**
 
@@ -25,7 +25,7 @@ And then all what you need is just to instantiate one or more created
 
 ***
 
-Read the **[Documentation](https://react-through.js.org)**
+Read the **[Documentation](https://react-through.js.org/basics/installation-and-setup)**
 
 # Synopsis
 

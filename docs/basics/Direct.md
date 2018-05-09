@@ -33,7 +33,7 @@ const  TopBar = (props) => (
 )
 ```
 
-But data is actually transfered from place where our indicator agent
+But data is actually mapped from place where our indicator agent
 is rendered.
 
 The simplest way to create agent just call agent factory function
