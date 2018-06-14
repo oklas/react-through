@@ -1,6 +1,6 @@
 {
   "name": "react-through",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Declarative data mapping through react tree",
   "main": "lib/index.js",
   "repository": {
@@ -69,7 +69,9 @@
       "^.+\\.jsx$": "babel-jest"
     },
     "testURL": "http://localhost",
-    "setupFiles": ["raf/polyfill"]
+    "setupFiles": [
+      "raf/polyfill"
+    ]
   },
   "scripts": {
     "build": "babel -d lib/ src",
