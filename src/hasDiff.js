@@ -1,6 +1,6 @@
 function hasDiff(prevProps, props) {
-  const pkeys = Object.keys(prevProps);
-  const nkeys = Object.keys(props);
+  const pkeys = Object.keys(prevProps)
+  const nkeys = Object.keys(props)
 
   if (pkeys.length !== nkeys.length) return true
 

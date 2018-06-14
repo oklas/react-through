@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Adapter from 'enzyme-adapter-react-16';
+import Adapter from 'enzyme-adapter-react-16'
 import enzyme, { shallow, mount, render } from 'enzyme'
 import { expect } from 'chai'
 
@@ -13,7 +13,7 @@ import {
 
 import ErrorBoundary from './ErrorBoundary'
 
-enzyme.configure({ adapter: new Adapter() });
+enzyme.configure({ adapter: new Adapter() })
 jest.dontMock('../src')
 
 const TestOneComponent = props => (

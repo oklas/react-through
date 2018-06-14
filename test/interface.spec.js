@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import enzyme, { shallow, mount, render } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16';
+import Adapter from 'enzyme-adapter-react-16'
 import { expect } from 'chai'
 
 import {
@@ -11,7 +11,7 @@ import {
 } from '../src'
 
 
-enzyme.configure({ adapter: new Adapter() });
+enzyme.configure({ adapter: new Adapter() })
 jest.dontMock('../src')
 
 class TestInterfaceComponent extends React.Component {
