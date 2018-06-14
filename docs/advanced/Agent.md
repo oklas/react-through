@@ -1,15 +1,15 @@
 # Advanced Agent
 
-This chapter shows more low lewel agent interface. It allows:
+This section shows more low-level agent interface. It allows:
 
-* update data as intiated from independent event (not an component state change)
+* update the data intiated from independent event (not an component state change)
 * agent may represent itself multiple agents
 * agent may render some content at place wher it rendered
 
 The second and third possibility may be achived by using more simple ways
 described in previous chapters by wrapping generic agents into components
-of course. However this is another interesting way which may be useful in
-some different cases.
+of course. However this is another interesting way which may be useful
+in some different cases.
 
 The function `throughAgent` integrate into component props property with
 name of requred area. The property is an object wich contains the `item()`

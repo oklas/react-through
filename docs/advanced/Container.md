@@ -1,7 +1,7 @@
 # Advanced Container
 
 Advanced container is usable for cases where more than one area is required
-or container itself is rendered with additional props which is may overlap
+or container itself is rendered with additional props which may overlap
 props from agent.
 
 Whole `through area` is mapped to prop with name of correspondent `through

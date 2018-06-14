@@ -5,11 +5,11 @@ and `through agents` in
 [core concepts](../introduction/CoreConcepts.md)
 before read this.
 
-Direct mapping is most simple usage. The `direct` means all props of your
-agent is directly mapped to destination associated container.
+Direct mapping is the simplest use. The `direct` means that all props of
+your agent are directly mapped to destination associated container.
 
-For example let's suppose area name is `indicator`. Then through container
-may be created with `throughDirect` like this:
+For example let's suppose the area name is an `indicator`. Then the
+through container may be created with `throughDirect` like this:
 
 ```js
 import {throughDirect} from 'react-through'
@@ -46,21 +46,23 @@ const IndicatorAgent = createAgent('indicator')
 
 ```
 
-Now render our `IndicatorAgent` at any place of react tree and declarative
-communication is runing.
+Now rendering `IndicatorAgent` at any place of the react tree maps
+balance declaratively to indicator container:
 
 ```js
   <IndicatorAgent balance="1000" />
 ```
 
-Only one such direct agent may be rendered in through area. But any number
-of through containers may be created for same area.
+Only one such direct agent can be rendered in the through area. But any
+number of through containers can be created for the same area.
 
-If you need multiple agents for same area it need to organize a way how to
-differentiate agents from each other. Read about that in next chapter.
+To get multiple agents for the same area, you need to organize a way
+how to differentiate agents from each other. Read about that in the next
+section.
 
-Agent itself renders nothing but you can wrap it in component or you can
-create advanced agents described in advanced section.
+Agent itself renders nothing but you can wrap it in component or you
+can create advanced agents described in advanced section.
 
-Secong argument of function `throughDirect` may be name of bearing prop or
-bearing key builder function which is described in next sections.
+Second argument of `throughDirect` function may be *the name of bearing
+prop* or *the bearing key builder function* which is described in the next
+sections.
