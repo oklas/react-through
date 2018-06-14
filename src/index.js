@@ -1,6 +1,7 @@
 import React, { Children } from 'react'
 import PropTypes from 'prop-types'
 
+export iesupport from './iesupport'
 export ThroughProvider from './ThroughProvider'
 export throughContainer from './throughContainer'
 export throughArea from './throughArea'
