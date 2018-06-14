@@ -8,8 +8,10 @@ function hasComplex(props) {
       return Object.prototype.hasOwnProperty.call(props, key)
     })
     .map( function(key){ return props[key] } )
-    .find( function(item) {
-      return !quicks.includes(typeof(item))
+    .find( function(prop) {
+      return !quicks.find( function(quickTypeName) {
+        return typeof(prop) === quickTypeName
+      })
     })
 }
 
