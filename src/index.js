@@ -1,5 +1,6 @@
 import React, { Children } from 'react'
 import PropTypes from 'prop-types'
+import 'babel-polyfill'
 
 export ThroughProvider from './ThroughProvider'
 export throughContainer from './throughContainer'

@@ -78,5 +78,8 @@
     "prepublish": "npm run build",
     "test": "jest --coverage",
     "test-debug": "jest --bail --verbose"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
   }
 }
