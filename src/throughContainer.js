@@ -7,7 +7,7 @@ const throughContainer =
   props => (
     <Through area={areaName}>
       { data =>
-        <Component {...rest} {...{[areaName]: data}} />
+        <Component {...props} {...{[areaName]: data}} />
       }
     </Through>
   )
