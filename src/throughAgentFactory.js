@@ -6,28 +6,27 @@ import hasComplex from './hasComplex'
 import throughAgent from './throughAgent'
 import Item from './Item'
 
-// this function with *two* params was documented and may be in use
-const throughAgentFactory = (area, key, syncUpdate = undefined) => {
-
-  if( !(typeof area === 'string' || area instanceof String ) ) {
-    throw new Error(
-      "type error: throughAgentFactory(area:string, key:string|function)"
-    )
-  }
-
+export function createThroughAgentClass(area, key, syncUpdate) {
   class ThroughAgent extends React.Component {
     static propTypes = {
       [area]: PropTypes.object,
     }
 
-    componentWillMount() {
-      this.configureItem(this.props)
+    constructor(props) {
+      super()
+      this.configureItem(props)
+      this.state = {
+        configureItem: this.configureItem,
+        props: {}
+      }
     }
 
-    componentWillReceiveProps(nextProps) {
-      if( hasDiff(nextProps, this.props) ) {
-        this.configureItem(nextProps)
+    static getDerivedStateFromProps(props, state) {
+      if( hasDiff(props, state.props) ) {
+        state.configureItem(props)
+        return {...state, props}
       }
+      return null
     }
 
     configureItem = syncUpdate === undefined ?
@@ -52,6 +51,20 @@ const throughAgentFactory = (area, key, syncUpdate = undefined) => {
   }
 
   ThroughAgent.displayName = `ThroughAgent.${area}`
+
+  return ThroughAgent
+}
+
+// this function with *two* params was documented and may be in use
+const throughAgentFactory = (area, key, syncUpdate = undefined) => {
+
+  if( !(typeof area === 'string' || area instanceof String ) ) {
+    throw new Error(
+      "type error: throughAgentFactory(area:string, key:string|function)"
+    )
+  }
+
+  const ThroughAgent = createThroughAgentClass(area, key, syncUpdate)
 
   return throughAgent(area, key)(ThroughAgent)
 }

@@ -81,6 +81,18 @@ describe('area - specific specs', function() {
   })
 })
 
+describe('throughContainer - specific specs', function() {
+  it("does not crash with unknown area", function() {
+    const TestContainer = throughContainer('test_area')(TestComponent)
+    const wrapper = mount(
+      <ThroughProvider>
+        <TestContainer />
+      </ThroughProvider>
+    )
+    wrapper.unmount()
+  })
+})
+
 const useFakeTimers = jest.useFakeTimers
 const runAllTimers = jest.runAllTimers
 

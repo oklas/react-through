@@ -30,9 +30,6 @@ const throughAgent = (area, key) => (AgentComponent) => {
     constructor(props, context) {
       super(props, context)
       this.data = {}
-    }
-
-    componentWillMount = () => {
       this.update(this.data)
     }
 

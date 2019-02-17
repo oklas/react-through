@@ -11,6 +11,8 @@ import {
   Item,
 } from '../src'
 
+import {createThroughAgentClass} from '../src/throughAgentFactory'
+
 describe('dummy components', function() {
   it("`Dummy` return null", function() {
     expect(Dummy()).to.be.null
@@ -64,5 +66,13 @@ describe('throughAgentFactory params checking', function() {
   })
   it("throw for object", function() {
     expect(() => { throughAgentFactory({})(Dummy) }).to.throw()
+  })
+})
+
+describe('ThroughAgent class', function() {
+  it("derived state for same values", function() {
+    const ThroughAgent = createThroughAgentClass({})
+    const state = ThroughAgent.getDerivedStateFromProps({}, {props: {}})
+    expect(state).to.be.null
   })
 })

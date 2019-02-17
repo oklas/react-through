@@ -48,11 +48,6 @@ class Through extends React.Component {
     this.canSetState = false
   }
 
-  componentWillReceiveProps(nextProps) {
-    if(this.props.area !== nextProps.area)
-      this.updateArea(nextProps.area)
-  }
-
   updateArea(area) {
     if(this.unsubscribe)
       this.unsubscribe()
