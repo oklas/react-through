@@ -14,10 +14,7 @@ class Through extends React.Component {
       PropTypes.string,
       PropTypes.bool,
     ]),
-    bearingKey: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.bool,
-    ]),
+    bearingKey: PropTypes.string,
     default: PropTypes.any,
     defaultValue: PropTypes.any,
     map: PropTypes.func,
