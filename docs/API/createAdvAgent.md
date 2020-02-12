@@ -50,6 +50,8 @@ one of
 const Agent = createAgent('myarea', 'id')
 const AdvAgent = createAdvAgent('myarea', 'id')
 
+const memoized = React.useMemo({}, [])
+
 <div>
   <Through area='myarea'>
     {(area) => {
@@ -63,6 +65,9 @@ const AdvAgent = createAdvAgent('myarea', 'id')
 
         good: because there is no props with new instance
         <AdvAgent area='myarea' data='' />
+
+        good: because memoized value is used
+        <AdvAgent area='myarea' data={memoized} />
       </div>
     }
   </Through>
