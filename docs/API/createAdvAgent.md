@@ -7,7 +7,9 @@ hide_title: true
 
 # `createAdvAgent(areaName, bearingPropOrBuilder)`
 
-This factory function is identical to `createAgent()` the difference is in the processing of anonimous instances of objects created inplace on the react render stage.
+This factory function is identical to `createAgent()` the difference is
+in the processing of anonimous instances of objects created inplace on
+the react render stage
 
 ## The problem
 
@@ -26,23 +28,31 @@ const Component = props = {
 }
 ```
 
-All the variables: `element`, `array`, `object`, `function`, (but not string) contains
-new unique instance of appropriate entity each time when the component is rendered. So
-once a new instance is receiving that cause new rerender which becom indefinite process.
+All the variables: `element`, `array`, `object`, `function`, (but not a `string`)
+contains new unique instance of appropriate entity each time when the component is
+rendered. So once a new instance is receiving that cause new rerender which becom
+indefinite process.
 
-This case appears only for case when through-container has through-agent as one of its
-children or some of subchildren at any depths.
+This case appears only for case when through-container has through-agent as one of
+its children or some of subchildren at any depths.
 
-# The two rules
+Strings actually also represent itself new instance but different from point of
+comparision. React state and delarative aprroach at all typicaly based on shallow
+compare to figure out state changes to initiate update process. Two different
+objects (and so on) are not equal `{} !== {}` even has identical content,
+but string `'' == ''` are equal. So components with string props created inplace
+in render stage has not this problem.
 
-In all the case `createAdvAgent()` is preferable due to it is more efficient.
-Except when one or both of the rules are satisfy.
+# The rule of two conditions
 
-The function `createAgent()` must be used instead of `createAdvAgent()` when
-one of
+In all the case `createAdvAgent()` is preferable due to it is more efficient,
+except when this rule satisfied:
 
-* one or more of agent prop contain new instance created each render without condition 
-* through-container uses same area as the one of its children through-agents
+The function `createAgent()` must be used instead of `createAdvAgent()`
+when match both of this conditions:
+
+* one or more of agent props contains new instance created each render without condition 
+* through-container uses same area as the one of its child through-agents
 
 ## Example
 
@@ -72,7 +82,7 @@ const memoized = React.useMemo({}, [])
     }
   </Through>
 
-  good: because advanced agent is not this is not one of (sub)children
+  good: because this is not (sub)children of container with same area 
   <AdvAgent area='myarea' data={[]} />
 
 </div>

@@ -14,9 +14,9 @@ Props from selected agent or whole area if bearingKey (or direct) prop is not sp
 
 ## Props
 
-* `area`: *String*: The name of the area see [Glossary](https://react-through.js.org/glossary)
+* `area`: *String*: The name of the area see [Glossary](../Glossary.md)
 * `bearingKey`: *String|undefined*: define which agent data is selected, or whole area data if undefined
-* `direct`: *String|bool|undefined*: same as `bearingKey` but also `boolean` is allowed and `true` is replaced with `default` for [direct mapping](https://react-through.js.org/basics/direct-mapping)
+* `direct`: *String|bool|undefined*: same as `bearingKey` but also `boolean` is allowed and `true` is replaced with `default` for [direct mapping](../basics/Direct.md)
 * `default`|`defaultValue`: *any*: default value passed to the render function if no such agent exists or in initial rendering
 * `children`: *function(props|area: Object)*: props from agent selected by `bearingKey` or `direct` or whole area if not specified
 
@@ -37,13 +37,12 @@ const Agent = createAdvAgent('myarea', 'id')
 ### Render data from each agent separtely
 
 ```js
-<Through area='myarea' direct='first' default='loading...'>
+<Through area='myarea' direct='first' default={{text: 'loading...'}}>
   { ({id, text}) => <p>{text}</p> }
 </Through>
-<Through area='myarea' direct='second' default='loading...'>
+<Through area='myarea' direct='second' default={{text: 'loading...'}}>
   { ({id, text}) => <p>{text}</p> }
 </Through>
-)
 ```
 
 ### Render data using whole area

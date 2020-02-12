@@ -26,7 +26,7 @@ export default throughDirect('indicator')(Indicator)
 this ballance indicator may be rendered at application top bar:
 
 ```js
-const  TopBar = (props) => (
+const TopBar = (props) => (
   <div>
     Balance <Indicator /> USD
   </div>

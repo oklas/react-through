@@ -7,7 +7,8 @@ hide_title: true
 
 # `throughDirect(areaName)`
 
-High Order Component merge the props from default agent (when only one agent for area is exists see [direct mapping](whole area to the  wrapped component props))
+High Order Component merge the props from default agent (when only one agent
+in whole area is exists see [direct mapping](../basics/Direct.md))
 
 ## Params
 

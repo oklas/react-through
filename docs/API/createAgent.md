@@ -33,7 +33,10 @@ In some cases one prop is not enough flexible to unique identify agent within th
 For such case bearing builder function is specifing instead of name of prop:
 
 ```
-const Agent = createAgent('myarea', ({category, id}) => `${category}-${id}`)
+const Agent = createAgent(
+  'myarea',
+  ({category, id}) => `${category}-${id}`
+)
 
 ...
 <Agent category='product' id='125' title='Product'/>
@@ -60,5 +63,6 @@ For such case container may enumerate all the area items:
 ## Notice
 
 The `createAgent()` is appropriate for more simple usage and prform additional checking.
-For better performance consider to use advance version: [createAdvAgent()](https://react-through.js.org/api-reference/createAdvAgent)
+For better performance consider to use advanced
+version: [createAdvAgent()](../API/createAdvAgent.md)
 
