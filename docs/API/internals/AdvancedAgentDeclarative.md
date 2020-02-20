@@ -1,15 +1,21 @@
-# Advanced Agent
+# Advanced Internal Agent Declarative Interface
 
-This section shows more low-level agent interface. It allows:
+This section shows low-level agent interface.
+In most case [createAgent()](../createAgent.md) or
+[createAdvAgent()](../createAdvAgent.md) is enough to solve all the tasks.
+However in case to update through area data from external non-react
+events that are not enough and may be achieved with this interface.
+
+In particular, it allows:
 
 * update the data intiated from independent event (not an component state change)
 * agent may represent itself multiple agents
 * agent may render some content at place wher it rendered
 
 The second and third possibility may be achived by using more simple ways
-described in previous chapters by wrapping generic agents into components
-of course. However this is another interesting way which may be useful
-in some different cases.
+described basic chapters by wrapping generic agents into components
+of course. However this is another way which may be useful in some
+different cases.
 
 The function `throughAgent` integrate into component props property with
 name of requred area. The property is an object wich contains the `item()`

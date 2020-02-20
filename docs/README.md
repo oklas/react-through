@@ -19,3 +19,5 @@
   * [Through](API/Through.md) (FoCC)
   * [throughArea](API/throughArea.md) (HOC)
   * [throughDirect](API/throughDirect.md) (HOC)
+  * [Internals](API/internals/README.md)
+    * [Internal Agent Interface](API/internals/AdvancedAgentDeclarative.md)
