@@ -1,4 +1,14 @@
-# Advanced Container
+---
+id: through-container
+title: throughContainer
+sidebar_label: throughContainer
+hide_title: true
+---
+
+# `throughContainer(areaName)`
+
+High Order Component merge the whole area to the wrapped component props
+as single item named with name of area.
 
 Advanced container is usable for cases where more than one area is required
 or container itself is rendered with additional props which may overlap
@@ -11,11 +21,10 @@ for that like this:
 ```js
 import {throughContainer} from 'react-through'
 
+const areaName = 'myAreaName'
+const bearingPropName = 'id'
+
 const MyContainer = (props) => {
-  const bearingPropName = 'id'
-
-  const areaName = 'myAreaName'
-
   const agentProps = props[areaName][bearingPropName]
 
   return (
@@ -26,5 +35,5 @@ const MyContainer = (props) => {
 }
 
 
-export default throughContainer(myAreaName)(MyContainer)
+export default throughContainer(areaName)(MyContainer)
 ```
