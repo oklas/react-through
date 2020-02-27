@@ -3,6 +3,9 @@
 It is possible to create many agents in any place of the react tree. The
 only requirement is that each agent must be unique identified in its area.
 
+(Check that you already have it [installed and enabled](./Setup.md)
+and already familiar with simple way [Direct mapping](./Direct.md))
+
 Agent may be unique identified based on its props. The easiest way is define
 some prop name (bearing prop) which contain unique idetifier (bearing key).
 

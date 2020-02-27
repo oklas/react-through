@@ -1,14 +1,14 @@
 # Direct Mapping
 
-Make sure that you read about `through area` and `through containers`
-and `through agents` in
-[core concepts](../introduction/CoreConcepts.md)
-before read this.
-
 Direct mapping is the simplest use. The `direct` means that all props of
 your agent are directly mapped to destination associated container.
 
-For example let's suppose the area name is an `indicator`. Then the
+Make sure that you read about `through area` and `through containers`
+and `through agents` in [core concepts](../introduction/CoreConcepts.md)
+before read this. And check that you already have it
+[installed and enabled](./Setup.md)
+
+Let's suppose for example the area name is an `indicator`. Then the
 through container may be created with `throughDirect` like this:
 
 ```js
@@ -66,3 +66,5 @@ can create advanced agents described in advanced section.
 Second argument of `throughDirect` function may be *the name of bearing
 prop* or *the bearing key builder function* which is described in the next
 sections.
+
+The **next step** is communication from [multiple agents](./ManyAgents.md)

@@ -56,3 +56,10 @@ import {ThroughProvider} from 'react-through'
 ```
 
 for each this library exports.
+
+## Let's start
+
+Now it is time to use it. It has two base methods:
+
+ * [Direct mapping](./Direct.md) (simple way) from one agent
+ * [Many agents](./ManyAgents.md) from multiple sources of data
