@@ -21,7 +21,9 @@ And then all what you need is just to instantiate one or more created
 [![Travis build status](http://img.shields.io/travis/oklas/react-through.svg?style=flat)](https://travis-ci.org/oklas/react-through)
 [![Test Coverage](https://img.shields.io/codecov/c/github/oklas/react-through.svg)](https://codecov.io/gh/oklas/react-through)
 [![Dependency Status](https://david-dm.org/oklas/react-through.svg)](https://david-dm.org/oklas/react-through)
-
+react-app-rewire-alias
+[![Star it](https://img.shields.io/github/stars/oklas/react-through.svg?style=social&label=Star)](https://github.com/oklas/react-through)
+[![Follow me](https://img.shields.io/twitter/follow/oklaspec.svg?style=social&label=Follow)](https://twitter.com/oklaspec)
 
 ***
 
