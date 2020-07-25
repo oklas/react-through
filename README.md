@@ -33,7 +33,7 @@ Read the **[Documentation](https://react-through.js.org/basics/installation-and-
 
 ``` javascript
   const Header = () => (
-    Your ballance: <IndicatorContainer/> USD
+    Your balance: <IndicatorContainer/> USD
   )
 
   const Content = () => (
