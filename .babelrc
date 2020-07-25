@@ -1,4 +1,11 @@
 {
-  "presets": ["es2015","stage-0"],
-  "plugins": ["transform-react-jsx", "transform-decorators-legacy"]
+  "presets": [
+    "@babel/react",
+    "@babel/env"
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    "@babel/proposal-export-default-from",
+    ["@babel/transform-runtime", { "regenerator": true }]
+  ]
 }
