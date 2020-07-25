@@ -139,10 +139,10 @@ describe('breadcrumbs api interface', function() {
     const wrapper = mount(<TestApp/>)
     expect(wrapper.find('.wrongInstallToKey')).to.have.length(1)
     expect(wrapper.find('.wrongInstallPropsType')).to.have.length(1)
-    expect(() => {
+    if(!process.env.SKIP_THROWABLE) expect(() => {
       wrapper.find('.wrongInstallToKey').simulate('click')
     }).to.throw()
-    expect(() => {
+    if(!process.env.SKIP_THROWABLE) expect(() => {
       wrapper.find('.wrongInstallPropsType').simulate('click')
     }).to.throw()
     wrapper.unmount()
@@ -151,7 +151,7 @@ describe('breadcrumbs api interface', function() {
   it("throw in update when key is unknown", function() {
     const wrapper = mount(<TestApp/>)
     expect(wrapper.find('.wrongUpdateUnknownKey')).to.have.length(1)
-    expect(() => {
+    if(!process.env.SKIP_THROWABLE) expect(() => {
       wrapper.find('.wrongUpdateUnknownKey').simulate('click')
     }).to.throw()
     wrapper.unmount()
@@ -159,10 +159,10 @@ describe('breadcrumbs api interface', function() {
 
   it("not throw in install for good types", function() {
     const wrapper = mount(<TestApp/>)
-    expect(() => {
+    if(!process.env.SKIP_THROWABLE) expect(() => {
       wrapper.find('.goodInstallToKey').simulate('click')
     }).not.to.throw()
-    expect(() => {
+    if(!process.env.SKIP_THROWABLE) expect(() => {
       wrapper.find('.goodInstallToStringKey').simulate('click')
     }).not.to.throw()
     wrapper.unmount()

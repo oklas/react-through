@@ -22,6 +22,7 @@ describe('dummy components', function() {
   })
 })
 
+if(!process.env.SKIP_THROWABLE)
 describe('ThroughProvider params checking', function() {
   it("throw for function", function() {
     expect(() => { ThroughProvider.prototype.checkArgs(()=>1) }).to.throw()
@@ -43,6 +44,7 @@ describe('ThroughProvider params checking', function() {
   })
 })
 
+if(!process.env.SKIP_THROWABLE)
 describe('throughAgent params checking', function() {
   it("throw for function", function() {
     expect(() => { throughAgent(()=>1)(Dummy) }).to.throw()
@@ -57,6 +59,7 @@ describe('throughAgent params checking', function() {
   })
 })
 
+if(!process.env.SKIP_THROWABLE)
 describe('throughAgentFactory params checking', function() {
   it("throw for function", function() {
     expect(() => { throughAgentFactory(()=>1)(Dummy) }).to.throw()

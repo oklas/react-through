@@ -57,13 +57,15 @@ describe('test with one agent in default area', function() {
     wrapper.unmount()
   })
 
-  it("throw for duplicate twice", function() {
-    const wrapper = mount(
-      <ErrorBoundary>
-        <TestOneApp value={3} sameAgentDuplicateTwice={true}/>
-      </ErrorBoundary>
-    )
-    expect(wrapper.find('u').at(0).props().children).to.equal('error')
-    wrapper.unmount()
-  })
+  if(!process.env.SKIP_THROWABLE) {
+    it("throw for duplicate twice", function() {
+      const wrapper = mount(
+        <ErrorBoundary>
+          <TestOneApp value={3} sameAgentDuplicateTwice={true}/>
+        </ErrorBoundary>
+      )
+      expect(wrapper.find('u').at(0).props().children).to.equal('error')
+      wrapper.unmount()
+    })
+  }
 })
